@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper Scissor</title>
+  </head>
+  <body>
+    <script>
+      console.log('Welcome to RPS game')
+      console.log('Only Console output for now')
+
+      let check = 0
+
+      function getComputerChoice() {
+        const choices = ['rock', 'paper', 'scissor']
+        const random = Math.floor(Math.random() * 3)
+        let choice = choices[random]
+        console.log('Computer: ' + choice)
+        return choice
+      }
+
+      function getHumanChoice() {
+        check = 0
+        let humanChoice = prompt('Enter your choice: Rock,Paper,Scissor')
+        humanChoice = humanChoice.toLowerCase()
+        if (
+          humanChoice === 'rock' ||
+          humanChoice === 'paper' ||
+          humanChoice === 'scissor'
+        ) {
+          console.log('Human: ' + humanChoice)
+          check = 1
+          return humanChoice
+        } else {
+          check = 0
+          console.log('Enter valid choice')
+        }
+      }
+      let humanScore = 0
+      let computerScore = 0
+
+      function playRound(humanChoice, choice) {
+        if (humanChoice === choice) {
+          console.log('It is Tie')
+        } else if (humanChoice === 'rock' && choice === 'scissor') {
+          console.log('Human wins')
+          humanScore++
+        } else if (humanChoice === 'paper' && choice === 'rock') {
+          console.log('Human wins')
+          humanScore++
+        } else if (humanChoice === 'scissors' && choice === 'paper') {
+          console.log('Human wins')
+          humanScore++
+        } else if (check === 0) {
+          console.log('Invalid choice by human')
+        } else {
+          console.log('Computer wins')
+          computerScore++
+        }
+      }
+
+      for (let i = 0; i < 5; i++) {
+        playRound(getHumanChoice(), getComputerChoice())
+        console.log('Human Score: ' + humanScore)
+        console.log('Computer Score: ' + computerScore)
+        console.log('--------------------------------')
+      }
+      console.log('Game over')
+      if (humanScore > computerScore) {
+        console.log('You Won')
+      } else if (humanScore < computerScore) {
+        console.log('You Lose')
+      } else {
+        console.log('Tied')
+      }
+      console.log('Thx for playing!!!!!')
+    </script>
+  </body>
+</html>
